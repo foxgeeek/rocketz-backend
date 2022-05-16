@@ -5,14 +5,15 @@ const https = require('https');
 exports.index = (req, res) => {
   Question.get((err, questions) => {
     if (err) {
-      res.json({
+      return res.json({
         status: "error",
         message: err,
       });
     }
-    res.json({
-      status: "Sucesso",
-      message: "A lista de questões foi carregada.",
+
+    return res.json({
+      status: 'Ok',
+      message: 'A lista de questões foi carregada.',
       data: questions
     });
   });
@@ -21,20 +22,25 @@ exports.index = (req, res) => {
 // Cria uma nova questão
 exports.new = (req, res) => {
   let new_question = new Question(req.body);
-  new_question.save((err, new_question) => {
-    if (err)
-      res.send(err);
-    res.json(new_question);
+  new_question.save((err, question) => {
+    if (err) {
+      return res.send(err);
+    }
+
+    return res.json(question);
   });
 };
 
 // Localiza a questão pelo ID
 exports.view = (req, res) => {
-  Question.findById(req.params.question_id, (err, question) => {
-    if (err)
-      res.send(err);
-    res.json({
-      message: 'Carregando detalhes da questão solicitado.',
+  Question.findById(req.params.id, (err, question) => {
+    if (err) {
+      return res.send(err);
+    }
+
+    return res.json({
+      status: 'OK',
+      message: 'Carregando detalhes da questão solicitada.',
       data: question
     });
   });
@@ -44,26 +50,29 @@ exports.view = (req, res) => {
 // Deleta a questão pelo ID
 exports.delete = (req, res) => {
   Question.remove({
-    _id: req.params.question_id
+    _id: req.params.id
   }, (err, question) => {
-    if (err)
-      res.send(err);
-    res.json({
-      status: "Sucesso",
+    if (err) {
+      return res.send(err);
+    }
+
+    return res.json({
+      status: 'OK',
       message: 'Questão deletada do banco de dados.'
     });
   });
 };
 
 // Localiza a questão pelo enunciado ou palavra
-exports.v = (req, res) => {
+exports.search = (req, res) => {
   Question.findOne({
-    nome: req.params.enunciado
+    enunciado: req.params.search
   }, (err, question) => {
     if (err) {
       return res.send(err);
     }
     res.json({
+      status: 'OK',
       message: 'Carregando detalhes da questão solicitada.',
       data: question
     });

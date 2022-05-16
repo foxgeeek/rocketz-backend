@@ -3,6 +3,9 @@ let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 
+let swaggerUI = require('swagger-ui-express');
+let swaggerDocument = require('./../swagger.json');
+
 let app = express();
 let apiRoutes = require("./routes/apiRoutes")
 
@@ -15,7 +18,8 @@ var db = mongoose.connection;
 
 app.get('/', (req, res) => res.send('ROCKETZ QUESTIONS DIGITAL - LEONARDO LACERDA'));
 
-app.use('/rocketz', apiRoutes)
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.use('/api', apiRoutes)
 
 // Define a porta do servidor
 app.listen(3000);
