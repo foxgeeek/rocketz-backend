@@ -1,8 +1,8 @@
 Question = require('../models/questionModel');
 const https = require('https');
 
-// Retorna lista de planetas
-exports.index = (req, res) => {
+// Retorna lista de questão
+exports.list = (req, res) => {
   Question.get((err, questions) => {
     if (err) {
       return res.json({
@@ -32,7 +32,7 @@ exports.new = (req, res) => {
 };
 
 // Localiza a questão pelo ID
-exports.view = (req, res) => {
+exports.byId = (req, res) => {
   Question.findById(req.params.id, (err, question) => {
     if (err) {
       return res.send(err);

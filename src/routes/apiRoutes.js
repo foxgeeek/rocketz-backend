@@ -3,9 +3,9 @@ let router = require('express').Router();
 
 let questionController = require('../controllers/questionController');
 
-router.route('/questions').get(questionController.index);
+router.route('/questions').get(questionController.list);
     
-router.route('/questions/:id').get(questionController.view);
+router.route('/questions/:id').get(questionController.byId);
 
 router.route('/questions/:search').get(questionController.search);
 
