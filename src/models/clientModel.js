@@ -2,16 +2,20 @@
 let mongoose = require('mongoose');
 
 let clientSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
   token: {
     type: String,
     required: true
   },
   password: {
-    type: Array,
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  url: {
+    type: String,
     required: true
   },
   email: {

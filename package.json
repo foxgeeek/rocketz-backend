@@ -12,7 +12,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "dependencies": "^0.0.1",
+    "dotenv": "^16.0.1",
     "express": "^4.16.4",
+    "express-openid-connect": "^2.7.2",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.3.12",
     "swagger-ui-express": "^4.4.0"
   },

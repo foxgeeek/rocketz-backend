@@ -16,6 +16,24 @@
     }
   },
   "paths": {
+    "/api/token": {
+      "get": {
+        "tags": ["Auth"],
+        "description": "Return token.",
+        "responses": {
+          "200": {          
+            "description": "List a token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/questions": {
       "get": {
         "tags": ["Questions"],
@@ -121,6 +139,79 @@
           "style": "simple"
         }
       ]
+    },
+    "/api/clients/new": {
+      "post": {
+        "tags": ["Clients"],
+        "summary": "Create client ",
+        "description":"Create a new client.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "$ref": "#/definitions/Clients"
+                },
+                "example": {
+                  "name": "Example test",
+                  "token": "ExampleTokenJWT",
+                  "password": "*************",
+                  "url": "https://mywebsite.com.br/",
+                  "email": "myemail@email.com",
+                  "cnpj": "000.000.000/000-00"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "message": "Created"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Clients": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cnpj": {
+          "type": "string"
+        }
+      }
     }
   }
 }

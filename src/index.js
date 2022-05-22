@@ -2,9 +2,17 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
-
 let swaggerUI = require('swagger-ui-express');
 let swaggerDocument = require('./../swagger.json');
+
+let config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.SECRET,
+  baseURL: process.env.BASEURL,
+  clientID: process.env.CLIENTID,
+  issuerBaseURL: process.env.ISSUER,
+}
 
 let app = express();
 let apiRoutes = require("./routes/apiRoutes")
