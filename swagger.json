@@ -68,6 +68,59 @@
           "style": "simple"
         }
       ]
+    },
+    "/api/clients": {
+      "get": {
+        "tags": ["Clients"],
+        "description": "Returns all clients.",
+        "responses": {
+          "200": {          
+            "description": "A list of clients.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/clients/{id}": {
+      "get": {
+        "tags": ["Clients"],
+        "description": "Returns client based on ID",
+        "summary": "Find client by ID",
+        "operationId": "getClientById",
+        "responses": {
+          "200": {
+            "description": "Client response",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array"
+                }
+              }
+            }
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "ID of client to use",
+          "required": true,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "style": "simple"
+        }
+      ]
     }
   }
 }
