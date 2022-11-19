@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Conecta ao banco
-mongoose.connect('mongodb://localhost/rocketz');
+mongoose.connect('mongodb://localhost/rocketz', { useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 
 app.get('/', (req, res) => res.send('ROCKETZ QUESTIONS DIGITAL - LEONARDO LACERDA'));
