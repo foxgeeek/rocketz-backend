@@ -12,7 +12,7 @@ module.exports = (credentials = []) => {
     // Find JWT in Headers
     const token = req.headers['authorization'];
     if (!token) {
-      return res.status(201).send('Sorry: Access Denied');
+      return res.status(403).send('Sorry: Access Denied');
     } else {
       // Validate JWT
       const tokenBody = token.slice(7);

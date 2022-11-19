@@ -17,7 +17,8 @@
     "express-openid-connect": "^2.7.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.3.12",
-    "swagger-ui-express": "^4.4.0"
+    "swagger-ui-express": "^4.4.0",
+    "twilio": "^3.83.3"
   },
   "devDependencies": {
     "@types/swagger-ui-express": "^4.1.3",

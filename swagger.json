@@ -160,7 +160,9 @@
                   "password": "*************",
                   "url": "https://mywebsite.com.br/",
                   "email": "myemail@email.com",
-                  "cnpj": "000.000.000/000-00"
+                  "cnpj": "000.000.000/000-00",
+                  "data_criacao": "01/12/2022 21:00:01",
+                  "data_alteracao": "01/12/2022 21:00:01"
                 }
               }
             }
@@ -210,6 +212,12 @@
         },
         "cnpj": {
           "type": "string"
+        },
+        "data_criacao": {
+          "type": "Date"
+        },
+        "data_alteracao": {
+          "type": "Date"
         }
       }
     }
